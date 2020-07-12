@@ -1,0 +1,49 @@
+使用selenium 抓取氣象局資料
+先行下載 selenium
+
+pip shell
+pip install selenium
+
+接著下載Chrome的dirver  https://chromedriver.chromium.org/
+＊先檢查Chrome版本號，核對後再下載對應版本號
+　（開啟Chrome→說明(E)→關於Google Chrome(G)）
+＊dirver  與程式放在同一層
+
+在py中匯入selenium 
+
+from selenium import webdriver
+
+目標：抓取氣象局今日天氣資料
+範例網址:https://www.cwb.gov.tw/V8/C/W/County/County.html?CID=10009
+
+觀察網址ID後，建立字典dict
+
+city_code_list={ #縣市ID清單
+    "基隆":"10017", "台北":"63", "新北":"65", "桃園":"68", "新竹":"10018", "苗栗":"10005", "台中":"66", "南投":"10008", "彰化":"10007", "雲林":"10009", "嘉義":"10020", "台南":"67", "高雄":"64", "屏東":"10013", "台東":"10014", "花蓮":"10015", "宜蘭":"10002",
+}
+
+建立一個input，輸入縣市即可進入該縣市網址
+
+city=input("輸入查詢")
+
+將查詢的字與字典比對並合成
+
+city_code = city_code_list[city]
+home_page = 'https://www.cwb.gov.tw/V8/C/W/County/County.html?CID='
+url = home_page + city_code
+
+
+
+find_element_by_id：元素的id（唯一識別）名稱
+
+find_element_by_class_name：元素的class（類別）名稱
+
+find_element_by_name：元素的name（欄位名稱）屬性
+
+find_element_by_tag_name：元素的標籤名稱
+
+　（相關語法：https://selenium-python-zh.readthedocs.io/en/latest/locating-elements.html）
+
+
+
+
